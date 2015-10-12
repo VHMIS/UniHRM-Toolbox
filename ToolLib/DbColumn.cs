@@ -10,7 +10,11 @@ namespace ToolLib
     {
         private string description;
 
-        private string name { get; }
+        private string name;
+
+        private string type;
+
+        private bool valid;
 
         public DbColumn(string description)
         {
@@ -19,10 +23,43 @@ namespace ToolLib
             this.check();
         }
 
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return type;
+            }
+        }
+
+        public bool Valid
+        {
+            get
+            {
+                return valid;
+            }
+        }
+
         private void check()
         {
             string[] token = this.description.Split(',');
-            string name = token[0];
+
+            if(token.Length < 2)
+            {
+                this.valid = false;
+                return;
+            }
+
+            this.valid = true;
+            this.name = token[0];
+            this.type = token[1];
         }
     }
 }

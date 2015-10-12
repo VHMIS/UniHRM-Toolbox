@@ -37,6 +37,11 @@ namespace ToolLib
 
             sql += "CREATE TABLE " + tableName + " (";
 
+            foreach (DbColumn col in columns)
+            {
+                sql += "\r\n";
+                sql += col.Name + " " + col.Type + ",";
+            }
 
             sql += "\r\n" + ") ON PRIMARY;";
 
@@ -49,7 +54,12 @@ namespace ToolLib
 
             for (int i = 1; i < token.Length; i++)
             {
-                list.Add(new DbColumn(token[i].Trim()));
+                DbColumn col = new DbColumn(token[i].Trim());
+
+                if (col.Valid)
+                {
+                    list.Add(col);
+                }
             }
 
             return list;
