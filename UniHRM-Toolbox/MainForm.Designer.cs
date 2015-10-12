@@ -66,6 +66,7 @@
             // 
             // txtDisplay
             // 
+            this.txtDisplay.Enabled = false;
             this.txtDisplay.Location = new System.Drawing.Point(12, 27);
             this.txtDisplay.Multiline = true;
             this.txtDisplay.Name = "txtDisplay";

@@ -33,6 +33,7 @@ namespace UniHRM_Toolbox
 
         private void frmCatalogue_onComplete(string text)
         {
+            this.txtDisplay.Enabled = true;
             this.txtDisplay.Text = text;
         }
     }

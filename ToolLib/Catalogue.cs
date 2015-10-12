@@ -20,13 +20,12 @@ namespace ToolLib
             string name = "TD_" + token[0].Trim();
             List<DbColumn> columns = Catalogue.getColumns(token);
 
-            // sql string for create db
-            string sqlCreateDb = Catalogue.sqlCreateDb(name, columns);
-
             // result
             string result = "";
+
             result += name;
-            result += "\r\n" + sqlCreateDb;
+            result += "\r\n" + Catalogue.sqlCreateDb(name, columns);
+            result += "\r\n" + "\r\n" + "\r\n" + Catalogue.sqlProcSelect(name);
 
             return result;
         }
@@ -40,10 +39,37 @@ namespace ToolLib
             foreach (DbColumn col in columns)
             {
                 sql += "\r\n";
-                sql += col.Name + " " + col.Type + ",";
+                sql += col.Name + " " + col.Type;
+
+                if (col.Id)
+                {
+                    sql += col.Id ? " IDENTITY(1,1)" : "";
+                }
+                else
+                {
+                    sql += col.NotNull ? " not null" : " null";
+                }
+
+                sql += col.PrimaryKey ? " PRIMARY KEY" : "";
+                sql += ",";
             }
 
-            sql += "\r\n" + ") ON PRIMARY;";
+            sql += "\r\n" + ");";
+
+            return sql;
+        }
+
+        private static string sqlProcSelect(string tableName)
+        {
+            string sql = "";
+
+            sql += "create procedure proc_" + tableName + "_Select";
+            sql += "\r\n" + "as";
+            sql += "\r\n" + "begin";
+            sql += "\r\n" + "set nocount on;";
+            sql += "\r\n" + "select * from " + tableName;
+            sql += "\r\n" + "set nocount off;";
+            sql += "\r\n" + "end";
 
             return sql;
         }
