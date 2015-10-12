@@ -24,7 +24,10 @@ namespace UniHRM_Toolbox
 
         private void newCatalogueMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (CatalogueForm frm = new CatalogueForm())
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }
