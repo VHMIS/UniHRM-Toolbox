@@ -31,7 +31,7 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.uniHRMToolboxMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDisplay = new System.Windows.Forms.TextBox();
             this.catalogueMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newCatalogueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
@@ -64,13 +64,13 @@
             this.menuItemExit.Text = "Exit";
             this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
             // 
-            // textBox1
+            // txtDisplay
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 27);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(701, 294);
-            this.textBox1.TabIndex = 1;
+            this.txtDisplay.Location = new System.Drawing.Point(12, 27);
+            this.txtDisplay.Multiline = true;
+            this.txtDisplay.Name = "txtDisplay";
+            this.txtDisplay.Size = new System.Drawing.Size(701, 294);
+            this.txtDisplay.TabIndex = 1;
             // 
             // catalogueMenu
             // 
@@ -92,7 +92,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 333);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDisplay);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
             this.Name = "MainForm";
@@ -110,7 +110,7 @@
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem uniHRMToolboxMenu;
         private System.Windows.Forms.ToolStripMenuItem menuItemExit;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.ToolStripMenuItem catalogueMenu;
         private System.Windows.Forms.ToolStripMenuItem newCatalogueMenuItem;
     }

@@ -24,10 +24,16 @@ namespace UniHRM_Toolbox
 
         private void newCatalogueMenuItem_Click(object sender, EventArgs e)
         {
-            using (CatalogueForm frm = new CatalogueForm())
+            using (CatalogueForm frmCatalogue = new CatalogueForm())
             {
-                frm.ShowDialog();
+                frmCatalogue.onCompleted += frmCatalogue_onComplete;
+                frmCatalogue.ShowDialog();
             }
+        }
+
+        private void frmCatalogue_onComplete(string text)
+        {
+            this.txtDisplay.Text = text;
         }
     }
 }

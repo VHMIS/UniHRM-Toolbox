@@ -8,9 +8,17 @@ namespace ToolLib
 {
     public class Catalogue
     {
-        public static string build()
+        public static string build(string description)
         {
-            return "";
+            string[] token = description.Split('\n');
+            if(token.Length < 2)
+            {
+                return "";
+            }
+
+            string name = "TD_" + token[0].Trim();
+
+            return name;
         }
     }
 }

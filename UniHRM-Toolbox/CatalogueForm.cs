@@ -11,8 +11,12 @@ using ToolLib;
 
 namespace UniHRM_Toolbox
 {
+    public delegate void eventOnComplete(string text);
+
     public partial class CatalogueForm : Form
     {
+        public event eventOnComplete onCompleted;
+
         public CatalogueForm()
         {
             InitializeComponent();
@@ -20,7 +24,12 @@ namespace UniHRM_Toolbox
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ToolLib.Catalogue.build();
+            string text = ToolLib.Catalogue.build(txtDescription.Text);
+
+            if (this.onCompleted != null)
+            {
+                this.onCompleted(text);
+            }
         }
     }
 }

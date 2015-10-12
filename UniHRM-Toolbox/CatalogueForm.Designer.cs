@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbDescription = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,13 +42,13 @@
             this.lbDescription.TabIndex = 0;
             this.lbDescription.Text = "Catalogue Description";
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(570, 286);
-            this.textBox1.TabIndex = 1;
+            this.txtDescription.Location = new System.Drawing.Point(15, 25);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(570, 286);
+            this.txtDescription.TabIndex = 1;
             // 
             // btnCreate
             // 
@@ -66,7 +66,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 352);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lbDescription);
             this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "CatalogueForm";
@@ -81,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbDescription;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnCreate;
     }
 }
