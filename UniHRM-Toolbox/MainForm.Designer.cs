@@ -28,20 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.uniHRMToolboxMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.catalogueMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCatalogueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Form1
+            // menu
+            // 
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uniHRMToolboxMenu,
+            this.catalogueMenu});
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(725, 24);
+            this.menu.TabIndex = 0;
+            this.menu.Text = "menu";
+            // 
+            // uniHRMToolboxMenu
+            // 
+            this.uniHRMToolboxMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemExit});
+            this.uniHRMToolboxMenu.Name = "uniHRMToolboxMenu";
+            this.uniHRMToolboxMenu.Size = new System.Drawing.Size(97, 20);
+            this.uniHRMToolboxMenu.Text = "UniHRM Toolbox";
+            // 
+            // menuItemExit
+            // 
+            this.menuItemExit.Name = "menuItemExit";
+            this.menuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.menuItemExit.Size = new System.Drawing.Size(132, 22);
+            this.menuItemExit.Text = "Exit";
+            this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 27);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(701, 294);
+            this.textBox1.TabIndex = 1;
+            // 
+            // catalogueMenu
+            // 
+            this.catalogueMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newCatalogueMenuItem});
+            this.catalogueMenu.Name = "catalogueMenu";
+            this.catalogueMenu.Size = new System.Drawing.Size(68, 20);
+            this.catalogueMenu.Text = "Catalogue";
+            // 
+            // newCatalogueMenuItem
+            // 
+            this.newCatalogueMenuItem.Name = "newCatalogueMenuItem";
+            this.newCatalogueMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newCatalogueMenuItem.Text = "New Catalogue";
+            this.newCatalogueMenuItem.Click += new System.EventHandler(this.newCatalogueMenuItem_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 333);
-            this.Name = "Form1";
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.menu);
+            this.MainMenuStrip = this.menu;
+            this.Name = "MainForm";
             this.Text = "Form1";
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem uniHRMToolboxMenu;
+        private System.Windows.Forms.ToolStripMenuItem menuItemExit;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem catalogueMenu;
+        private System.Windows.Forms.ToolStripMenuItem newCatalogueMenuItem;
     }
 }
 

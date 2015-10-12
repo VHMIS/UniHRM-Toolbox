@@ -16,5 +16,15 @@ namespace UniHRM_Toolbox
         {
             InitializeComponent();
         }
+
+        private void menuItemExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void newCatalogueMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
