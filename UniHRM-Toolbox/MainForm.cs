@@ -36,5 +36,13 @@ namespace UniHRM_Toolbox
             this.txtDisplay.Enabled = true;
             this.txtDisplay.Text = text;
         }
+
+        private void menuItemSetting_Click(object sender, EventArgs e)
+        {
+            using (SettingForm frmSetting = new SettingForm())
+            {
+                frmSetting.ShowDialog();
+            }
+        }
     }
 }

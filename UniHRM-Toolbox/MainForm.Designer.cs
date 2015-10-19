@@ -31,9 +31,10 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.uniHRMToolboxMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtDisplay = new System.Windows.Forms.TextBox();
             this.catalogueMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newCatalogueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtDisplay = new System.Windows.Forms.TextBox();
+            this.menuItemSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // uniHRMToolboxMenu
             // 
             this.uniHRMToolboxMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemSetting,
             this.menuItemExit});
             this.uniHRMToolboxMenu.Name = "uniHRMToolboxMenu";
             this.uniHRMToolboxMenu.Size = new System.Drawing.Size(97, 20);
@@ -60,18 +62,9 @@
             // 
             this.menuItemExit.Name = "menuItemExit";
             this.menuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuItemExit.Size = new System.Drawing.Size(132, 22);
+            this.menuItemExit.Size = new System.Drawing.Size(152, 22);
             this.menuItemExit.Text = "Exit";
             this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
-            // 
-            // txtDisplay
-            // 
-            this.txtDisplay.Enabled = false;
-            this.txtDisplay.Location = new System.Drawing.Point(12, 27);
-            this.txtDisplay.Multiline = true;
-            this.txtDisplay.Name = "txtDisplay";
-            this.txtDisplay.Size = new System.Drawing.Size(701, 294);
-            this.txtDisplay.TabIndex = 1;
             // 
             // catalogueMenu
             // 
@@ -84,9 +77,25 @@
             // newCatalogueMenuItem
             // 
             this.newCatalogueMenuItem.Name = "newCatalogueMenuItem";
-            this.newCatalogueMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newCatalogueMenuItem.Size = new System.Drawing.Size(147, 22);
             this.newCatalogueMenuItem.Text = "New Catalogue";
             this.newCatalogueMenuItem.Click += new System.EventHandler(this.newCatalogueMenuItem_Click);
+            // 
+            // txtDisplay
+            // 
+            this.txtDisplay.Enabled = false;
+            this.txtDisplay.Location = new System.Drawing.Point(12, 27);
+            this.txtDisplay.Multiline = true;
+            this.txtDisplay.Name = "txtDisplay";
+            this.txtDisplay.Size = new System.Drawing.Size(701, 294);
+            this.txtDisplay.TabIndex = 1;
+            // 
+            // menuItemSetting
+            // 
+            this.menuItemSetting.Name = "menuItemSetting";
+            this.menuItemSetting.Size = new System.Drawing.Size(152, 22);
+            this.menuItemSetting.Text = "Setting";
+            this.menuItemSetting.Click += new System.EventHandler(this.menuItemSetting_Click);
             // 
             // MainForm
             // 
@@ -114,6 +123,7 @@
         private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.ToolStripMenuItem catalogueMenu;
         private System.Windows.Forms.ToolStripMenuItem newCatalogueMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSetting;
     }
 }
 
