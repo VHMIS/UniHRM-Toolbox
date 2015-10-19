@@ -44,5 +44,13 @@ namespace UniHRM_Toolbox
                 frmSetting.ShowDialog();
             }
         }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            if (txtDisplay.Enabled)
+            {
+                Clipboard.SetText(txtDisplay.Text);
+            }
+        }
     }
 }
