@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.uniHRMToolboxMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUniHRMToolbox = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.catalogueMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.newCatalogueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.txtDisplay = new System.Windows.Forms.TextBox();
             this.btnCopy = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
@@ -42,27 +42,27 @@
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uniHRMToolboxMenu,
-            this.catalogueMenu});
+            this.menuUniHRMToolbox,
+            this.menuDatabase});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(742, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menu";
             // 
-            // uniHRMToolboxMenu
+            // menuUniHRMToolbox
             // 
-            this.uniHRMToolboxMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuUniHRMToolbox.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemSetting,
             this.menuItemExit});
-            this.uniHRMToolboxMenu.Name = "uniHRMToolboxMenu";
-            this.uniHRMToolboxMenu.Size = new System.Drawing.Size(97, 20);
-            this.uniHRMToolboxMenu.Text = "UniHRM Toolbox";
+            this.menuUniHRMToolbox.Name = "menuUniHRMToolbox";
+            this.menuUniHRMToolbox.Size = new System.Drawing.Size(97, 20);
+            this.menuUniHRMToolbox.Text = "UniHRM Toolbox";
             // 
             // menuItemSetting
             // 
             this.menuItemSetting.Name = "menuItemSetting";
-            this.menuItemSetting.Size = new System.Drawing.Size(132, 22);
+            this.menuItemSetting.Size = new System.Drawing.Size(152, 22);
             this.menuItemSetting.Text = "Setting";
             this.menuItemSetting.Click += new System.EventHandler(this.menuItemSetting_Click);
             // 
@@ -70,24 +70,24 @@
             // 
             this.menuItemExit.Name = "menuItemExit";
             this.menuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuItemExit.Size = new System.Drawing.Size(132, 22);
+            this.menuItemExit.Size = new System.Drawing.Size(152, 22);
             this.menuItemExit.Text = "Exit";
             this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
             // 
-            // catalogueMenu
+            // menuDatabase
             // 
-            this.catalogueMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newCatalogueMenuItem});
-            this.catalogueMenu.Name = "catalogueMenu";
-            this.catalogueMenu.Size = new System.Drawing.Size(68, 20);
-            this.catalogueMenu.Text = "Catalogue";
+            this.menuDatabase.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemNewDatabase});
+            this.menuDatabase.Name = "menuDatabase";
+            this.menuDatabase.Size = new System.Drawing.Size(65, 20);
+            this.menuDatabase.Text = "Database";
             // 
-            // newCatalogueMenuItem
+            // menuItemNewDatabase
             // 
-            this.newCatalogueMenuItem.Name = "newCatalogueMenuItem";
-            this.newCatalogueMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.newCatalogueMenuItem.Text = "New Catalogue";
-            this.newCatalogueMenuItem.Click += new System.EventHandler(this.newCatalogueMenuItem_Click);
+            this.menuItemNewDatabase.Name = "menuItemNewDatabase";
+            this.menuItemNewDatabase.Size = new System.Drawing.Size(152, 22);
+            this.menuItemNewDatabase.Text = "New Database";
+            this.menuItemNewDatabase.Click += new System.EventHandler(this.newCatalogueMenuItem_Click);
             // 
             // txtDisplay
             // 
@@ -131,11 +131,11 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem uniHRMToolboxMenu;
+        private System.Windows.Forms.ToolStripMenuItem menuUniHRMToolbox;
         private System.Windows.Forms.ToolStripMenuItem menuItemExit;
         private System.Windows.Forms.TextBox txtDisplay;
-        private System.Windows.Forms.ToolStripMenuItem catalogueMenu;
-        private System.Windows.Forms.ToolStripMenuItem newCatalogueMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuDatabase;
+        private System.Windows.Forms.ToolStripMenuItem menuItemNewDatabase;
         private System.Windows.Forms.ToolStripMenuItem menuItemSetting;
         private System.Windows.Forms.Button btnCopy;
     }

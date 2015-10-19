@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ToolLib
 {
-    public class Catalogue
+    public class Database
     {
         public static string dt_pre = "DT_";
         public static string sp_pre = "proc_";
 
-        public static string build(string description)
+        public static string fromString(string description)
         {
             string[] token = description.Split('\n');
             if (token.Length < 2)
@@ -21,19 +21,19 @@ namespace ToolLib
 
             // name and column
             string name = dt_pre + token[0].Trim();
-            List<DbColumn> columns = Catalogue.getColumns(token);
+            List<DbColumn> columns = Database.getColumns(token);
 
             // result
             string result = "";
 
             result += name;
-            result += "\r\n" + Catalogue.sqlCreateDb(name, columns);
-            result += "\r\n" + "\r\n" + "\r\n" + Catalogue.sqlProcSelect(name);
-            result += "\r\n" + "\r\n" + Catalogue.sqlProcInsert(name, columns);
-            result += "\r\n" + "\r\n" + Catalogue.sqlProcDel(name, columns);
-            result += "\r\n" + "\r\n" + Catalogue.sqlProcUpdate(name, columns);
-            result += "\r\n" + "\r\n" + Catalogue.sqlProcInUse(name, columns);
-            result += "\r\n" + "\r\n" + Catalogue.sqlProcExists(name, columns);
+            result += "\r\n" + Database.sqlCreateDb(name, columns);
+            result += "\r\n" + "\r\n" + "\r\n" + Database.sqlProcSelect(name);
+            result += "\r\n" + "\r\n" + Database.sqlProcInsert(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcDel(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcUpdate(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcInUse(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcExists(name, columns);
 
             return result;
         }
@@ -222,7 +222,8 @@ namespace ToolLib
 
             for (int i = 1; i < token.Length; i++)
             {
-                DbColumn col = new DbColumn(token[i].Trim());
+                DbColumn col = new DbColumn();
+                col.fromString(token[i]);
 
                 if (col.Valid)
                 {

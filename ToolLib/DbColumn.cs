@@ -8,8 +8,6 @@ namespace ToolLib
 {
     class DbColumn
     {
-        private string description;
-
         private string name;
 
         private string type;
@@ -22,19 +20,8 @@ namespace ToolLib
 
         private bool primaryKey;
 
-        public DbColumn(string description)
+        public DbColumn()
         {
-            this.description = description;
-
-            this.check();
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
         }
 
         public string Type
@@ -42,6 +29,11 @@ namespace ToolLib
             get
             {
                 return type;
+            }
+
+            set
+            {
+                type = value;
             }
         }
 
@@ -59,6 +51,11 @@ namespace ToolLib
             {
                 return notNull;
             }
+
+            set
+            {
+                notNull = value;
+            }
         }
 
         public bool PrimaryKey
@@ -66,6 +63,11 @@ namespace ToolLib
             get
             {
                 return primaryKey;
+            }
+
+            set
+            {
+                primaryKey = value;
             }
         }
 
@@ -75,15 +77,37 @@ namespace ToolLib
             {
                 return id;
             }
+
+            set
+            {
+                id = value;
+            }
         }
 
-        private void check()
+        public string Name
         {
-            string[] token = this.description.Split(',');
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public void fromString(string description)
+        {
+            string[] token = description.Split(',');
 
             if(token.Length < 2)
             {
                 this.valid = false;
+                this.id = false;
+                this.primaryKey = false;
+                this.name = "";
+                this.type = "";
                 return;
             }
 

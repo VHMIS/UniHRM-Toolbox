@@ -13,21 +13,21 @@ namespace UniHRM_Toolbox
 {
     public delegate void eventOnComplete(string text);
 
-    public partial class CatalogueForm : Form
+    public partial class NewDatabaseForm : Form
     {
         public event eventOnComplete onCompleted;
 
-        public CatalogueForm()
+        public NewDatabaseForm()
         {
             InitializeComponent();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ToolLib.Catalogue.dt_pre = Properties.Settings.Default.dt_pre;
-            ToolLib.Catalogue.sp_pre = Properties.Settings.Default.sp_pre;
+            ToolLib.Database.dt_pre = cbDt.Checked ? Properties.Settings.Default.dt_pre : "";
+            ToolLib.Database.sp_pre = Properties.Settings.Default.sp_pre;
 
-            string text = ToolLib.Catalogue.build(txtDescription.Text);
+            string text = ToolLib.Database.fromString(txtDescription.Text);
 
             if (this.onCompleted != null)
             {

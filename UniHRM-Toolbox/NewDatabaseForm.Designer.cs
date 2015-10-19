@@ -1,6 +1,6 @@
 ﻿namespace UniHRM_Toolbox
 {
-    partial class CatalogueForm
+    partial class NewDatabaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.lbDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.cbDt = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lbDescription
@@ -38,9 +39,9 @@
             this.lbDescription.AutoSize = true;
             this.lbDescription.Location = new System.Drawing.Point(12, 9);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(111, 13);
+            this.lbDescription.Size = new System.Drawing.Size(109, 13);
             this.lbDescription.TabIndex = 0;
-            this.lbDescription.Text = "Catalogue Description";
+            this.lbDescription.Text = "Database Description";
             // 
             // txtDescription
             // 
@@ -60,19 +61,29 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // CatalogueForm
+            // cbDt
+            // 
+            this.cbDt.AutoSize = true;
+            this.cbDt.Location = new System.Drawing.Point(129, 8);
+            this.cbDt.Name = "cbDt";
+            this.cbDt.Size = new System.Drawing.Size(99, 17);
+            this.cbDt.TabIndex = 3;
+            this.cbDt.Text = "Dictionary table";
+            this.cbDt.UseVisualStyleBackColor = true;
+            // 
+            // NewDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 352);
+            this.Controls.Add(this.cbDt);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lbDescription);
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Name = "CatalogueForm";
+            this.Name = "NewDatabaseForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Catalogue";
+            this.Text = "Database";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,5 +94,6 @@
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.CheckBox cbDt;
     }
 }

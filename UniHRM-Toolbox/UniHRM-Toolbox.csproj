@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogueForm.cs">
+    <Compile Include="NewDatabaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CatalogueForm.Designer.cs">
-      <DependentUpon>CatalogueForm.cs</DependentUpon>
+    <Compile Include="NewDatabaseForm.Designer.cs">
+      <DependentUpon>NewDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
@@ -71,8 +71,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CatalogueForm.resx">
-      <DependentUpon>CatalogueForm.cs</DependentUpon>
+    <EmbeddedResource Include="NewDatabaseForm.resx">
+      <DependentUpon>NewDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
