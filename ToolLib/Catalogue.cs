@@ -8,6 +8,9 @@ namespace ToolLib
 {
     public class Catalogue
     {
+        public static string dt_pre = "DT_";
+        public static string sp_pre = "proc_";
+
         public static string build(string description)
         {
             string[] token = description.Split('\n');
@@ -17,7 +20,7 @@ namespace ToolLib
             }
 
             // name and column
-            string name = "TD_" + token[0].Trim();
+            string name = dt_pre + "_" + token[0].Trim();
             List<DbColumn> columns = Catalogue.getColumns(token);
 
             // result
@@ -63,7 +66,7 @@ namespace ToolLib
         {
             string sql = "";
 
-            sql += "create procedure proc_" + tableName + "_Select";
+            sql += "create procedure " + sp_pre + tableName + "_Select";
             sql += "\r\n" + "as";
             sql += "\r\n" + "begin";
             sql += "\r\n" + "set nocount on;";

@@ -32,7 +32,7 @@
             this.txtSpPre = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblDTPre = new System.Windows.Forms.Label();
-            this.txtDTPre = new System.Windows.Forms.TextBox();
+            this.txtDtPre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblSpPre
@@ -70,19 +70,19 @@
             this.lblDTPre.TabIndex = 3;
             this.lblDTPre.Text = "Dictionary Table Prefix";
             // 
-            // txtDTPre
+            // txtDtPre
             // 
-            this.txtDTPre.Location = new System.Drawing.Point(15, 65);
-            this.txtDTPre.Name = "txtDTPre";
-            this.txtDTPre.Size = new System.Drawing.Size(285, 20);
-            this.txtDTPre.TabIndex = 4;
+            this.txtDtPre.Location = new System.Drawing.Point(15, 65);
+            this.txtDtPre.Name = "txtDtPre";
+            this.txtDtPre.Size = new System.Drawing.Size(285, 20);
+            this.txtDtPre.TabIndex = 4;
             // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 332);
-            this.Controls.Add(this.txtDTPre);
+            this.Controls.Add(this.txtDtPre);
             this.Controls.Add(this.lblDTPre);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txtSpPre);
@@ -101,6 +101,6 @@
         private System.Windows.Forms.TextBox txtSpPre;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblDTPre;
-        private System.Windows.Forms.TextBox txtDTPre;
+        private System.Windows.Forms.TextBox txtDtPre;
     }
 }

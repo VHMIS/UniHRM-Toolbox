@@ -24,6 +24,9 @@ namespace UniHRM_Toolbox
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            ToolLib.Catalogue.dt_pre = Properties.Settings.Default.dt_pre;
+            ToolLib.Catalogue.sp_pre = Properties.Settings.Default.sp_pre;
+
             string text = ToolLib.Catalogue.build(txtDescription.Text);
 
             if (this.onCompleted != null)

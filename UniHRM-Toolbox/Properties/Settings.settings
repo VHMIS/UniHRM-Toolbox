@@ -6,7 +6,7 @@
       <Value Profile="(Default)">proc_</Value>
     </Setting>
     <Setting Name="dt_pre" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DT</Value>
+      <Value Profile="(Default)">DT_</Value>
     </Setting>
   </Settings>
 </SettingsFile>

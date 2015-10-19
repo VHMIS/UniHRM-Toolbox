@@ -37,7 +37,7 @@ namespace UniHRM_Toolbox.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DT")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DT_")]
         public string dt_pre {
             get {
                 return ((string)(this["dt_pre"]));
