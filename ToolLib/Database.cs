@@ -27,13 +27,16 @@ namespace ToolLib
             string result = "";
 
             result += name;
-            result += "\r\n" + Database.sqlCreateDb(name, columns);
-            result += "\r\n" + "\r\n" + "\r\n" + Database.sqlProcSelect(name);
+            result += "\r\n" + "\r\n" + Database.sqlCreateDb(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcSelect(name);
             result += "\r\n" + "\r\n" + Database.sqlProcInsert(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcDel(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcUpdate(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcInUse(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcExists(name, columns);
+
+            result += "\r\n" + "\r\n" + Database.codeMetaData(name, columns);
+            result += "\r\n" + "\r\n" + Database.codeCommandList(name);
 
             return result;
         }
@@ -214,6 +217,45 @@ namespace ToolLib
             sql += "\r\n";
 
             return sql;
+        }
+
+        private static string codeMetaData(string tableName, List<DbColumn> columns)
+        {
+            string code = "";
+
+            code += "#region";
+            code += "\r\n//";
+            code += "\r\n//" + tableName.ToUpper();
+            code += "\r\n//";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "").ToUpper() + " = \"" + tableName + "\";";
+            foreach (DbColumn col in columns)
+            {
+                code += "\r\npublic const string " + tableName.Replace("DT_", "").ToUpper() + "_" + col.Name.ToUpper() + " = \"" + col.Name + "\";";
+            }
+
+            code += "\r\n#endregion";
+
+            return code;
+        }
+
+        private static string codeCommandList(string tableName)
+        {
+            string code = "";
+
+            code += "#region";
+            code += "\r\n//";
+            code += "\r\n//" + tableName.ToUpper();
+            code += "\r\n//";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_Select = \"" + Database.sp_pre + tableName + "_Select\";";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_Insert = \"" + Database.sp_pre + tableName + "_Insert\";";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_Update = \"" + Database.sp_pre + tableName + "_Update\";";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_Delete = \"" + Database.sp_pre + tableName + "_Delete\";";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_InUse = \"" + Database.sp_pre + tableName + "_InUse\";";
+            code += "\r\npublic const string " + tableName.Replace("DT_", "") + "_Exists = \"" + Database.sp_pre + tableName + "_Exists\";";
+            
+            code += "\r\n#endregion";
+
+            return code;
         }
 
         private static List<DbColumn> getColumns(string[] token)
