@@ -31,6 +31,8 @@
             this.lblSpPre = new System.Windows.Forms.Label();
             this.txtSpPre = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.lblDTPre = new System.Windows.Forms.Label();
+            this.txtDTPre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblSpPre
@@ -44,7 +46,7 @@
             // 
             // txtSpPre
             // 
-            this.txtSpPre.Location = new System.Drawing.Point(13, 26);
+            this.txtSpPre.Location = new System.Drawing.Point(15, 26);
             this.txtSpPre.Name = "txtSpPre";
             this.txtSpPre.Size = new System.Drawing.Size(285, 20);
             this.txtSpPre.TabIndex = 1;
@@ -59,11 +61,29 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // lblDTPre
+            // 
+            this.lblDTPre.AutoSize = true;
+            this.lblDTPre.Location = new System.Drawing.Point(12, 49);
+            this.lblDTPre.Name = "lblDTPre";
+            this.lblDTPre.Size = new System.Drawing.Size(113, 13);
+            this.lblDTPre.TabIndex = 3;
+            this.lblDTPre.Text = "Dictionary Table Prefix";
+            // 
+            // txtDTPre
+            // 
+            this.txtDTPre.Location = new System.Drawing.Point(15, 65);
+            this.txtDTPre.Name = "txtDTPre";
+            this.txtDTPre.Size = new System.Drawing.Size(285, 20);
+            this.txtDTPre.TabIndex = 4;
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 332);
+            this.Controls.Add(this.txtDTPre);
+            this.Controls.Add(this.lblDTPre);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.txtSpPre);
             this.Controls.Add(this.lblSpPre);
@@ -80,5 +100,7 @@
         private System.Windows.Forms.Label lblSpPre;
         private System.Windows.Forms.TextBox txtSpPre;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblDTPre;
+        private System.Windows.Forms.TextBox txtDTPre;
     }
 }

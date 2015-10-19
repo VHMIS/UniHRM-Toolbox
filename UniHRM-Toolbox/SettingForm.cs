@@ -17,11 +17,13 @@ namespace UniHRM_Toolbox
             InitializeComponent();
 
             txtSpPre.Text = Properties.Settings.Default.sp_pre;
+            txtSpPre.Text = Properties.Settings.Default.dt_pre;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.sp_pre = txtSpPre.Text;
+            Properties.Settings.Default.dt_pre = txtDTPre.Text;
             Properties.Settings.Default.Save();
         }
     }
