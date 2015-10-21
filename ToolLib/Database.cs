@@ -29,25 +29,32 @@ namespace ToolLib
             result += name;
             result += "\r\n" + "\r\n" + Database.sqlCreateDb(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcSelect(name);
+            result += "\r\n" + "\r\n" + Database.sqlProcSelectByPrimaryKey(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcSelectByKey(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcInsert(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcDel(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcUpdate(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcInUse(name, columns);
             result += "\r\n" + "\r\n" + Database.sqlProcExists(name, columns);
+            result += "\r\n" + "\r\n" + Database.sqlProcExistsByKey(name, columns);
 
             result += "\r\n" + "\r\n" + Database.codeMetaData(name, columns);
             result += "\r\n" + "\r\n" + Database.codeCommandList(name);
 
             string codeInsert = Database.codeDataLayerInsert(name, columns);
             string codeInUse = Database.codeDataLayerInUse(name, columns);
+            string codeInUseByKey = Database.codeDataLayerInUseByKey(name, columns);
 
             result += "\r\n" + Database.codeDataLayerOpen(name);
             result += "\r\n" + Database.codeDataLayerSelect(name);
             result += "\r\n" + codeInsert;
             result += "\r\n" + Database.codeDataLayerUpdate(codeInsert);
-            result += "\r\n" + Database.codeDataLayerDelete(codeInUse);
-            result += "\r\n" + codeInUse;
-            result += "\r\n" + Database.codeDataLayerExists(codeInUse);
+            if (codeInUse != "") result += "\r\n" + Database.codeDataLayerDelete(codeInUse);
+            if (codeInUseByKey != "") result += "\r\n" + Database.codeDataLayerDeleteByKey(codeInUseByKey);
+            if (codeInUse != "") result += "\r\n" + codeInUse;
+            if(codeInUseByKey != "") result += "\r\n" + codeInUseByKey;
+            if (codeInUse != "") result += "\r\n" + Database.codeDataLayerExists(codeInUse);
+            if (codeInUseByKey != "") result += "\r\n" + Database.codeDataLayerExistsByKey(codeInUseByKey);
             result += "\r\n}";
 
             return result;
@@ -97,6 +104,76 @@ namespace ToolLib
             return sql;
         }
 
+        private static string sqlProcSelectByPrimaryKey(string tableName, List<DbColumn> columns)
+        {
+            string sql = @"create procedure {4}{0}_Select_By_{1}
+{2}
+as
+begin
+set nocount on;
+select * from {0} where
+{3}
+set nocount off;
+end";
+            string declares = "";
+            string conditions = "";
+            string name = "";
+            bool found = false;
+
+            foreach (DbColumn col in columns)
+            {
+                if (col.PrimaryKey)
+                {
+                    name = col.Name;
+                    declares= "@" + col.Name + " " + col.Type;
+                    conditions = col.Name + " = @" + col.Name;
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                return "";
+            }
+
+            return String.Format(sql, tableName, name, declares, conditions, sp_pre);
+        }
+
+        private static string sqlProcSelectByKey(string tableName, List<DbColumn> columns)
+        {
+            string sql = @"create procedure {4}{0}_Select_By_{1}
+{2}
+as
+begin
+set nocount on;
+select * from {0} where
+{3}
+set nocount off;
+end";
+            List<String> declares = new List<string>();
+            List<String> conditions = new List<string>();
+            List<String> names = new List<string>();
+            bool found = false;
+
+            foreach (DbColumn col in columns)
+            {
+                if (col.Key && !col.PrimaryKey)
+                {
+                    declares.Add("@" + col.Name + " " + col.Type);
+                    conditions.Add(col.Name + " = @" + col.Name);
+                    names.Add(col.Name);
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                return "";
+            }
+
+            return String.Format(sql, tableName, String.Join("_", names), String.Join(",\r\n", declares), String.Join("\r\nand ", conditions), sp_pre);
+        }
+
         private static string sqlProcDel(string tableName, List<DbColumn> columns)
         {
             string sql = "";
@@ -122,6 +199,7 @@ namespace ToolLib
         private static string sqlProcExists(string tableName, List<DbColumn> columns)
         {
             string sql = "";
+            bool found = false;
 
             foreach (DbColumn col in columns)
             {
@@ -136,10 +214,51 @@ namespace ToolLib
                     sql += "\r\n" + "else select 0 as IsExists";
                     sql += "\r\n" + "end";
                     sql += "\r\n";
+                    found = true;
+                    break;
                 }
             }
 
+            if (!found)
+            {
+                return "";
+            }
+
             return sql;
+        }
+
+        private static string sqlProcExistsByKey(string tableName, List<DbColumn> columns)
+        {
+            string sql = @"create procedure {4}{0}_Exists_By_{1}
+{2}
+as
+begin
+if exists(select * from {0} where {3})
+select 1 as IsExists
+else select 0 as IsExists
+end";
+            List<String> declares = new List<string>();
+            List<String> conditions = new List<string>();
+            List<String> names = new List<string>();
+            bool found = false;
+
+            foreach (DbColumn col in columns)
+            {
+                if (col.Key && !col.PrimaryKey)
+                {
+                    declares.Add("@" + col.Name + " " + col.Type);
+                    conditions.Add(col.Name + " = @" + col.Name);
+                    names.Add(col.Name);
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                return "";
+            }
+
+            return String.Format(sql, tableName, String.Join("_", names), String.Join(",\r\n", declares), String.Join(" and ", conditions), sp_pre);
         }
 
         private static string sqlProcInsert(string tableName, List<DbColumn> columns)
@@ -176,6 +295,7 @@ namespace ToolLib
         private static string sqlProcInUse(string tableName, List<DbColumn> columns)
         {
             string sql = "";
+            bool found = false;
 
             foreach (DbColumn col in columns)
             {
@@ -190,7 +310,14 @@ namespace ToolLib
                     sql += "\r\n" + "else select 0 as InUse";
                     sql += "\r\n" + "end";
                     sql += "\r\n";
+                    found = true;
+                    break;
                 }
+            }
+
+            if (!found)
+            {
+                return "";
             }
 
             return sql;
@@ -209,7 +336,7 @@ namespace ToolLib
             {
                 declares.Add("@" + col.Name + " " + col.Type);
 
-                if (!col.PrimaryKey)
+                if (!col.PrimaryKey && !col.Key)
                 {
                     updates.Add(col.Name + " = @" + col.Name);
                 }
@@ -357,14 +484,22 @@ namespace ToolLib
             List<String> declaredCmdParams = new List<string>();
             List<String> declaredParams = new List<string>();
             string command = tableName + "_InUse";
+            bool found = false;
 
             foreach (DbColumn col in columns)
             {
                 if (col.PrimaryKey)
                 {
+                    found = true;
                     declaredParams.Add("string " + col.Name);
                     declaredCmdParams.Add("cmd.Parameters.Add(CreateParameter(\"@\" + MetaData." + getMetaDataName(tableName, col.Name) + ", DbType.String, " + col.Name + "));");
+                    break;
                 }
+            }
+
+            if (!found)
+            {
+                return "";
             }
 
             return String.Format(code, String.Join(", ", declaredParams), command, String.Join("\r\n", declaredCmdParams));
@@ -388,6 +523,68 @@ namespace ToolLib
         private static string codeDataLayerDelete(string tableName, List<DbColumn> columns)
         {
             return codeDataLayerDelete(codeDataLayerInUse(tableName, columns));
+        }
+
+        private static string codeDataLayerInUseByKey(string tableName, List<DbColumn> columns)
+        {
+            string code = @"
+                public bool InUse({0})
+                {{
+                    try
+                    {{
+                        DbCommand cmd = CreateCommand(CommandList.{1}_By_{3}, CommandType.StoredProcedure);
+                        {2}
+                        return Helper.ConvertToBool(ExecuteScalar(cmd));
+                    }}
+                    catch (Exception ex)
+                    {{
+                        return true;
+                    }}
+                }}";
+
+            List<String> declaredCmdParams = new List<string>();
+            List<String> declaredParams = new List<string>();
+            List<String> names = new List<string>();
+            string command = tableName + "_InUse";
+            bool found = false;
+
+            foreach (DbColumn col in columns)
+            {
+                if (col.Key && !col.PrimaryKey)
+                {
+                    found = true;
+                    names.Add(col.Name);
+                    declaredParams.Add("string " + col.Name);
+                    declaredCmdParams.Add("cmd.Parameters.Add(CreateParameter(\"@\" + MetaData." + getMetaDataName(tableName, col.Name) + ", DbType.String, " + col.Name + "));");
+                }
+            }
+
+            if (!found)
+            {
+                return "";
+            }
+
+            return String.Format(code, String.Join(", ", declaredParams), command, String.Join("\r\n", declaredCmdParams), String.Join("_", names));
+        }
+
+        private static string codeDataLayerExistsByKey(string inUseCodeByKey)
+        {
+            return inUseCodeByKey.Replace("InUse", "Exists");
+        }
+
+        private static string codeDataLayerExistsByKey(string tableName, List<DbColumn> columns)
+        {
+            return codeDataLayerExistsByKey(codeDataLayerInUseByKey(tableName, columns));
+        }
+
+        private static string codeDataLayerDeleteByKey(string inUseCodeByKey)
+        {
+            return inUseCodeByKey.Replace("InUse", "Delete").Replace("return true;", "return false;").Replace("return Helper.ConvertToBool(ExecuteScalar(cmd));", "ExecuteNonQuery(cmd);\r\nreturn true;");
+        }
+
+        private static string codeDataLayerDeleteByKey(string tableName, List<DbColumn> columns)
+        {
+            return codeDataLayerDeleteByKey(codeDataLayerInUseByKey(tableName, columns));
         }
 
         private static string codeDataLayerOpen(string tableName)

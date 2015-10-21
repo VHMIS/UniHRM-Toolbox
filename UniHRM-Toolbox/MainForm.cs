@@ -41,7 +41,7 @@ namespace UniHRM_Toolbox
         {
             using (SettingForm frmSetting = new SettingForm())
             {
-                frmSetting.Show();
+                frmSetting.ShowDialog();
             }
         }
 

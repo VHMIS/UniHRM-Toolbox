@@ -20,6 +20,8 @@ namespace ToolLib
 
         private bool primaryKey;
 
+        private bool key;
+
         public DbColumn()
         {
         }
@@ -97,6 +99,19 @@ namespace ToolLib
             }
         }
 
+        public bool Key
+        {
+            get
+            {
+                return key;
+            }
+
+            set
+            {
+                key = value;
+            }
+        }
+
         public void fromString(string description)
         {
             string[] token = description.Split(',');
@@ -131,11 +146,17 @@ namespace ToolLib
             }
 
             this.primaryKey = false;
+            this.key = false;
             if(token.Length >= 4)
             {
                 if(token[3].Contains("primary"))
                 {
                     this.primaryKey = true;
+                }
+
+                if(token[3].Contains("key"))
+                {
+                    this.key = true;
                 }
             }
         }
