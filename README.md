@@ -21,6 +21,11 @@ Gõ cấu trúc Database theo dạng
     Tên_trường_3,Kiểu_trường,not null hoặc id,primary
     Tên_trường_4,Kiểu_trường,not null hoặc id,primary
     ...
+    
+Kết quả sinh ra có thể phải chỉnh sửa ở một số điểm
+
+- Bỏ dấu phẩy cuối ở sql khởi tạo DB
+- Kiểu dữ liệu của tham số truyền vào mặc định là string 
 
 Ví dụ
 
