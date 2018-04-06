@@ -31,7 +31,7 @@ Ví dụ
 
     DanToc
     id,interger,id,primary
-    slug,varchar(22),not
+    slug,varchar(22),not,key
     name,nvarchar(22),not
     note,text
     
