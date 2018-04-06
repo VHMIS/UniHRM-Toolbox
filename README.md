@@ -4,8 +4,9 @@ UniHRM-Toolbox
 Một số công cụ để phát triển nhanh trên hệ thống Uni của đại học Huế
 
 Tính năng
-[x] Tạo code quan trọng cho bảng DB mới
-[ ] Tạo file giao diện cho bảng DB là từ điển độc lập
+
+- [x] Tạo code quan trọng cho bảng DB mới
+- [ ] Tạo file giao diện cho bảng DB là từ điển độc lập
 
 Tạo nhanh các code chính cho 1 bảng CSDL mới
 --------------------------------------------
